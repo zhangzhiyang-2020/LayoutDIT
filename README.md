@@ -55,7 +55,7 @@ python -m torch.distributed.launch --nproc_per_node=2 --master_port 29930 train.
 
 # Decoding
 ```python
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=0
 export OMP_NUM_THREADS=4
 export MKL_NUM_THREADS=4
 
@@ -75,3 +75,18 @@ python decode.py \
     --num_beams 4 \
     --early_stopping 
 ```
+
+# Results
+Our model achieves 46.97 on DITrans En-Zh DIT task. Detailed results are reported as follow.
+* Multi-domain setting:  In this setting, models are trained on DITrans' all three domains and tested on each domain.
+  | Method | End-to-End | # Params (M) | Report | News | Advertisement |
+  | --- | --- | --- | --- | --- | --- |
+  | DocHandler-1 | No | 142 | 21.47 | 26.28 | 23.14 |
+  | DocHandler-2 | No | 172 | 24.80 | 27.34 | 24.99 |
+  | MGTrans-DETR | No | 212 | 28.30 | 27.61 | 25.76 |
+  | MGTrans-Conv | No | 238 | 28.99 | 28.84 | 25.63 |
+  | LayoutLM-Dec | Yes | 232 | 45.86 | 40.66 | 36.90 |
+  | LiLT-Dec | Yes | 250 | 46.11 | 40.37 | 36.22 |
+  | LayoutDIT-Cascade | No | 293 | 36.78 | 34.56 | 35.36 |
+  | LayoutDIT | Yes | 206 | 46.97 | 38.82 | 45.72 |
+  
