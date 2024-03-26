@@ -11,8 +11,6 @@ from transformers import AutoTokenizer, BertTokenizer
 
 Chinese_tokenizer_dir = "/path/to/Chinese_tokenizer_dir"
 Chinese_tokenizer = BertTokenizer.from_pretrained(Chinese_tokenizer_dir)
-# Chinese_xlnet_base_dir = "/data/zyzhang/zyz/fileMT/expr_multi_task/LayoutReaderEncoderDecoder/chinese-xlnet-base"
-# Chinese_tokenizer = AutoTokenizer.from_pretrained(Chinese_xlnet_base_dir)
 
 
 def gelu(x):
