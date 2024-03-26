@@ -11,5 +11,44 @@ torch==1.8.1
 transformers==4.30.0
 jieba==0.42.1
 nltk==3.8.1
+```
 
 # Training
+```python
+export CUDA_VISIBLE_DEVICES=0,1
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+
+
+python -m torch.distributed.launch --nproc_per_node=2 --master_port 29930 train.py \
+    --train_folder /path/to/train_folder \
+    --base_model_type layoutlm \
+    --model_name layoutlm-base-uncased \
+    --output_dir /path/to/ckpts_dir \
+    --log_dir /path/to/logs_dir \
+    --cache_dir /path/to/cache_dir \
+    --max_source_length 512 \
+    --max_target_length 512 \
+    --num_hidden_layers 6 \
+    --cached_train_features_file /path/to/pre-processed_feat_pt_file \
+    --do_lower_case \
+    --per_gpu_train_batch_size 16 \
+    --learning_rate 7e-5 \
+    --label_smoothing 0.1 \
+    --num_training_steps 200000 \
+    --num_warmup_steps 10000 \
+    --random_prob 0.80 \
+    --keep_prob 0.05 \
+    --logging_steps 2 \
+    --save_steps $[200000 / 40] \
+    --fp16 \
+    --fp16_opt_level O1 \
+    --senseg_encoder_num_hidden_layers 1 \
+    --senseg_task_loss_relative_weight 1 \
+    --src_sen_max_len 128 \
+    --tgt_sen_max_len 128 \
+    --tgt_max_position_embeddings 256 \
+    --trans_decoder_num_hidden_layers 6 \
+    --trans_task_relative_weight 1 \
+    --trans_decoder_max_fwd_tokens 768
+```
