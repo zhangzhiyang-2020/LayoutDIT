@@ -77,9 +77,9 @@ python decode.py \
 ```
 
 # Results
-Our model achieves 46.97 on DITrans En-Zh DIT task. Detailed results are reported as follow.
-* Multi-domain setting:  In this setting, models are trained on DITrans' all three domains and tested on each domain.
-  | Method | End-to-End | # Params (M) | Report | News | Advertisement |
+Our model achieves 46.97 on DITrans-Report En-Zh DIT task. Detailed results are reported as follow.
+* Multi-domain learning: In this setting, models are trained on DITrans' all three domains and tested on each domain.
+  | Method | End-to-End | # Params (M) | DITrans-Report | DITrans-News | DITrans-Advertisement |
   | --- | --- | --- | --- | --- | --- |
   | DocHandler-1 | No | 142 | 21.47 | 26.28 | 23.14 |
   | DocHandler-2 | No | 172 | 24.80 | 27.34 | 24.99 |
@@ -89,4 +89,15 @@ Our model achieves 46.97 on DITrans En-Zh DIT task. Detailed results are reporte
   | LiLT-Dec | Yes | 250 | 46.11 | 40.37 | 36.22 |
   | LayoutDIT-Cascade | No | 293 | 36.78 | 34.56 | 35.36 |
   | LayoutDIT | Yes | 206 | 46.97 | 38.82 | 45.72 |
-  
+* Zero-shot cross-domain transfer: In this setting, models are trained only on DITrans-Report domain and are tested on each domain. This setting evaluates the cross-domain ability of models.
+  | Method | End-to-End | # Params (M) | DITrans-Report | DITrans-News | DITrans-Advertisement |
+  | --- | --- | --- | --- | --- | --- |
+  | DocHandler-1 | No | 142 | 21.80 | 16.87 | 13.55 |
+  | DocHandler-2 | No | 172 | 25.19 | 16.88 | 13.60 |
+  | MGTrans-DETR | No | 212 | 27.34 | 16.26 | 13.09 |
+  | MGTrans-Conv | No | 238 | 29.51 | 17.78 | 14.07 |
+  | LayoutLM-Dec | Yes | 232 | 45.71 | 27.56 | 21.40 |
+  | LiLT-Dec | Yes | 250 | 46.61 | 23.71 | 18.14 |
+  | LayoutDIT-Cascade | No | 293 | 39.85 | 21.89 | 16.62 |
+  | LayoutDIT | Yes | 206 | 46.70 | 29.01 | 29.46 |
+* More experiment results including low-resource DIT, En-De/Fr results, and ablations can be found in our paper.
