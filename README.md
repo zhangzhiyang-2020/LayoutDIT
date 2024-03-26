@@ -101,3 +101,34 @@ Our model achieves 46.97 on DITrans-Report En-Zh DIT task. Detailed results are 
   | LayoutDIT-Cascade | No | 293 | 39.85 | 21.89 | 16.62 |
   | LayoutDIT | Yes | 206 | 46.70 | 29.01 | 29.46 |
 * More experiment results including low-resource DIT, En-De/Fr results, and ablations can be found in our paper.
+
+# Citation
+If you find LayoutDIT helpful, please cite us: 
+```python
+@inproceedings{zhang-etal-2023-layoutdit,
+    title = "{L}ayout{DIT}: Layout-Aware End-to-End Document Image Translation with Multi-Step Conductive Decoder",
+    author = "Zhang, Zhiyang  and
+      Zhang, Yaping  and
+      Liang, Yupu  and
+      Xiang, Lu  and
+      Zhao, Yang  and
+      Zhou, Yu  and
+      Zong, Chengqing",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2023",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-emnlp.673",
+    doi = "10.18653/v1/2023.findings-emnlp.673",
+    pages = "10043--10053",
+}
+```
+
+# Contact
+For help or issues using LayoutDIT, please submit a GitHub issue.
+
+For other communications related to LayoutDIT, please contact Zhiyang Zhang (zhangzhiyang2020@ia.ac.cn).
