@@ -128,6 +128,9 @@ If you find LayoutDIT helpful, please cite us:
 }
 ```
 
+# License
+This project is licensed under the license found in the LICENSE file in the root directory of this source tree. Portions of the source code are based on the [transformers](https://github.com/huggingface/transformers) project.
+
 # Contact
 For help or issues using LayoutDIT, please submit a GitHub issue.
 
