@@ -21,7 +21,7 @@ export MKL_NUM_THREADS=4
 
 
 python -m torch.distributed.launch --nproc_per_node=2 --master_port 29930 train.py \
-    --train_folder /path/to/train_folder \
+    --train_folder /path/to/trainset_folder \
     --base_model_type layoutlm \
     --model_name layoutlm-base-uncased \
     --output_dir /path/to/ckpts_dir \
@@ -30,7 +30,7 @@ python -m torch.distributed.launch --nproc_per_node=2 --master_port 29930 train.
     --max_source_length 512 \
     --max_target_length 512 \
     --num_hidden_layers 6 \
-    --cached_train_features_file /path/to/pre-processed_feat_pt_file \
+    --cached_train_features_file /path/to/pre-processed_train_feat_pt_file \
     --do_lower_case \
     --per_gpu_train_batch_size 16 \
     --learning_rate 7e-5 \
@@ -51,4 +51,27 @@ python -m torch.distributed.launch --nproc_per_node=2 --master_port 29930 train.
     --trans_decoder_num_hidden_layers 6 \
     --trans_task_relative_weight 1 \
     --trans_decoder_max_fwd_tokens 768
+```
+
+# Decoding
+```python
+export CUDA_VISIBLE_DEVICES=2
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+
+python decode.py \
+    --test_folder /path/to/testset_folder \
+    --cached_test_features_dir /path/to/pre-processed_test_feat_pt_file_dir \
+    --cached_test_features_filename test_feat_pt_filename \
+    --test_output_dir /path/to/decoding_results_dir \
+    --model_recovery_dir /path/to/used_ckpt_dir \
+    --cache_dir /path/to/cache_dir \
+    --do_lower_case \
+    --batch_size 32 \
+    --fp16 \
+    --src_sen_max_len 128 \
+    --tgt_sen_max_len 128 \
+    --trans_decoder_max_fwd_tokens 8960 \
+    --num_beams 4 \
+    --early_stopping 
 ```
